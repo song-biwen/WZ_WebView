@@ -14,6 +14,7 @@
 		4C6CB35B1DDE9162009DDDFA /* WZNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CB35A1DDE9162009DDDFA /* WZNavigationViewController.m */; };
 		4C6CB35E1DDE919D009DDDFA /* WZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CB35D1DDE919D009DDDFA /* WZMainViewController.m */; };
 		4C6CB3641DDE9799009DDDFA /* WZWebViewController_01.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CB3631DDE9799009DDDFA /* WZWebViewController_01.m */; };
+		4C6CB3671DDEAA0C009DDDFA /* WZImageClickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CB3661DDEAA0C009DDDFA /* WZImageClickViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		4C6CB35D1DDE919D009DDDFA /* WZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZMainViewController.m; sourceTree = "<group>"; };
 		4C6CB3621DDE9799009DDDFA /* WZWebViewController_01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZWebViewController_01.h; sourceTree = "<group>"; };
 		4C6CB3631DDE9799009DDDFA /* WZWebViewController_01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZWebViewController_01.m; sourceTree = "<group>"; };
+		4C6CB3651DDEAA0C009DDDFA /* WZImageClickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZImageClickViewController.h; sourceTree = "<group>"; };
+		4C6CB3661DDEAA0C009DDDFA /* WZImageClickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZImageClickViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				4C6CB35D1DDE919D009DDDFA /* WZMainViewController.m */,
 				4C6CB3621DDE9799009DDDFA /* WZWebViewController_01.h */,
 				4C6CB3631DDE9799009DDDFA /* WZWebViewController_01.m */,
+				4C6CB3651DDEAA0C009DDDFA /* WZImageClickViewController.h */,
+				4C6CB3661DDEAA0C009DDDFA /* WZImageClickViewController.m */,
 				4C6CB34E1DDE8FEC009DDDFA /* Assets.xcassets */,
 				4C6CB3501DDE8FEC009DDDFA /* LaunchScreen.storyboard */,
 				4C6CB3531DDE8FEC009DDDFA /* Info.plist */,
@@ -158,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6CB3671DDEAA0C009DDDFA /* WZImageClickViewController.m in Sources */,
 				4C6CB35E1DDE919D009DDDFA /* WZMainViewController.m in Sources */,
 				4C6CB3471DDE8FEB009DDDFA /* AppDelegate.m in Sources */,
 				4C6CB3441DDE8FEB009DDDFA /* main.m in Sources */,
