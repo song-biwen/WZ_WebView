@@ -1,61 +1,57 @@
 //
-//  WZWebViewController_01.m
+//  WZWebViewController_02.m
 //  WZWebView
 //
 //  Created by songbiwen on 2016/11/18.
 //  Copyright © 2016年 songbiwen. All rights reserved.
 //
 
-#import "WZWebViewController_01.h"
+#import "WZWebViewController_02.h"
+#import <WebKit/WebKit.h>
 
 #define WZLink @"https://github.com/song-biwen/WZ_WebView"
-@interface WZWebViewController_01 ()
-<UIWebViewDelegate>
+
+@interface WZWebViewController_02 ()
+<WKNavigationDelegate>
 @end
 
-@implementation WZWebViewController_01
+@implementation WZWebViewController_02
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"WZWebViewController_01";
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    self.title = @"WZWebViewController_02";
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://m.dianping.com/tuan/deal/5501525"]]];
-    webView.delegate = self;
+    webView.navigationDelegate = self;
     [self.view addSubview:webView];
+    
 }
 
-
-#pragma mark -UIWebViewDelegate
-
-/**
+#pragma mark - WKNavigationDelegate
+/*
  网页即将开始加载时，调用该方法
-
- 可以监听网页里面的所有网络请求
- 
- ———— 实现js间接调用oc
- @param webView <#webView description#>
- @param request <#request description#>
- @param navigationType <#navigationType description#>
- @return yes 表示网络请求成功，no 表示阻止网络请求
+ //必须调用decisionHandler
  */
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSString *urlStr = request.URL.absoluteString;
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    NSString *urlStr = navigationAction.request.URL.absoluteString;
     if ([urlStr isEqualToString:WZLink]) {
         //截取图片的点击事件
         Class class = NSClassFromString(@"WZImageClickViewController");
         id subVC = [[class alloc] init];
         [self.navigationController pushViewController:subVC animated:YES];
-        return NO;
+        decisionHandler(WKNavigationActionPolicyCancel);
+        
+    }else {
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
-    return YES;
 }
-/**
- 网页加载完成之后，调用该方法
 
- @param webView <#webView description#>
+/*
+ 网页加载完成之后，调用该方法
  */
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSMutableString *mutableStr = [NSMutableString string];
     //删除导航栏的元素
     [mutableStr appendString:@"var header = document.getElementsByTagName('header')[0];header.parentNode.removeChild(header);"];
@@ -67,7 +63,6 @@
     //给图片添加点击事件
     [mutableStr appendFormat:@"var imgTag = document.getElementsByTagName('figure')[0].children[0];imgTag.onclick = function imgTagClick() {window.location.href= '%@'};",WZLink];
     //注入js删除网页相应元素
-    [webView stringByEvaluatingJavaScriptFromString:mutableStr];
+    [webView evaluateJavaScript:mutableStr completionHandler:nil];
 }
-
 @end

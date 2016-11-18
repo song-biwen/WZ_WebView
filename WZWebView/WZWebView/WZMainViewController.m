@@ -23,7 +23,7 @@
     self.title = @"Main";
     
     [self.view addSubview:self.tableView];
-    self.dataSource = [[NSMutableArray alloc] initWithObjects:@"WZWebViewController_01", nil];
+    self.dataSource = [[NSMutableArray alloc] initWithObjects:@"WZWebViewController_01",@"WZWebViewController_02", nil];
     [self.tableView reloadData];
 }
 
